@@ -1,0 +1,38 @@
+erDiagram
+    USERS ||--o{ PROJECTS : owns
+    USERS ||--o{ TASKS : assigned_to
+    PROJECTS ||--o{ TASKS : contains
+    USERS ||--o{ PROJECT_MEMBERS : participates_in
+    PROJECTS ||--o{ PROJECT_MEMBERS : includes
+
+    USERS {
+        bigint user_id PK
+        varchar name
+        varchar email UK
+        timestamptz created_at
+    }
+
+    PROJECTS {
+        bigint project_id PK
+        varchar project_name
+        bigint owner_id FK
+        timestamptz created_at
+    }
+
+    TASKS {
+        bigint task_id PK
+        bigint project_id FK
+        varchar task_name
+        text description
+        bigint assigned_user_id FK
+        varchar status
+        date due_date
+        timestamptz created_at
+    }
+
+    PROJECT_MEMBERS {
+        bigint project_id PK, FK
+        bigint user_id PK, FK
+        varchar role
+        timestamptz joined_at
+    }
