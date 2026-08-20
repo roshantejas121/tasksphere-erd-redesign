@@ -1,0 +1,13 @@
+# Dependencies and generated runtime files
+node_modules/
+.env
+.env.*
+!.env.example
+
+# Local operating-system and editor files
+.DS_Store
+.vscode/
+.idea/
+
+# Local media and validation artifacts
+*.log
